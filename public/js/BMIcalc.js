@@ -35,5 +35,6 @@ function readinput2() {
   
   console.log(test2)
   document.getElementById("wrapper").innerHTML = test2
+  console.log(test2)
 }
 
