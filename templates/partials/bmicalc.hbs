@@ -1,0 +1,68 @@
+<bmicalc>
+<div class="container">
+        <div class="row">
+        <div class="col-md-6">
+            <h3 class="jumbotron text-center">BMI Calculator</h3> 
+            <div class="row">
+                <div class="col-md-6">
+                    <form role="form"> 
+                    <div class="form-group">
+                        <div class="radio">
+                        <label>
+                            <input type="radio" onclick="javascript:radioCheck();" name="optionsRadios" id="imperial" value="option1" checked>
+                            <span class="label label-danger">Imperial</span>
+                        </label>
+                        </div> 
+                        
+                        <div class="radio">
+                        <label>
+                            <input type="radio" onclick="javascript:radioCheck();" name="optionsRadios" id="metric" value="option2">
+                            <span class="label label-success">Metric</span>
+                        </label>
+                        </div>
+                        
+                    </div>
+
+                    
+                    <div id="form_Imperial" style="display:block">
+                        <div class="form-group form-inline">
+                            <label for="weight">Weight (lb): </label>
+                            <input type="number" class="w-50 borders" id="weight" placeholder="weight in lb" class="form-control">
+                        </div>
+                        
+                        <div class="form-group form-inline">
+                            <label for="weight_foot">Height (foot): </label>
+                            <input type="number" class="w-50 borders" id="weight_foot" placeholder="height in foot" class="form-control">
+                        </div>
+                        
+                        <div class="form-group form-inline">
+                            <label for="height_inch">Height (inch):</label>
+                            <input type="number" class="w-50 borders" id="height_inch" placeholder="height in inch" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div id="form_metric" style="display:none;">
+                        <div class="form-group form-inline">
+                            <label for="weight_kg">Weight (kg):  </label>
+                            <input type="number" oninput="readinput1()" id="weight_kg" placeholder="weight in kg" class="form-control">
+                        </div>
+                        
+                        <div class="form-group form-inline">
+                            <label for="height_cm">Height (cm):  </label>
+                            <input type="number" oninput="readinput2()" id="height_cm" placeholder="height in cm" class="form-control">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>        
+            </form>
+            
+            <!-- Calculated BMI is shown here -->
+            <div class="well text-center">
+            <h3 class="text-muted">Calculated BMI</h3>
+             {{test2}}
+            </div>
+        </div>
+        </div>
+</div>        
+</bmicalc>

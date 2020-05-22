@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Fitness Center</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="bs-example">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a href="#" class="navbar-brand">
+            <img src="/images/fitnesslogo.png" height=28 alt="fitness logo">
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="/" class="nav-item nav-link active">Home</a>
+                <a href="/bodycheck" class="nav-item nav-link">Check Body</a>
+                <div class="dropdown">
+                    <a href="#" class="dropdown nav-item nav-link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Items calories</a>
+                    <div class="dropdown-menu nav-bg" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Veg</a>
+                        <a class="dropdown-item" href="#">Non-Veg</a>
+                        <a class="dropdown-item" href="#">Eggetarian</a>
+                        <a class="dropdown-item" href="#">Vegan</a>
+                    </div>
+                </div>    
+                <a href="#" class="nav-item nav-link">Diet Chart</a>
+                <a href="#" class="nav-item nav-link">Workout plan</a>
+                <a href="./contactus.html" class="nav-item nav-link">Contact Us</a>
+            </div>
+            <div class="navbar-nav ml-auto">
+               <!-- <a href="login.html" class="nav-item nav-link">Login</a> -->
+                <a href="#" onclick="document.getElementById('id01').style.display='block'" class="nav-item nav-link">Login</a>
+                <a href="#" onclick="document.getElementById('id02').style.display='block'" class="nav-item nav-link">SignUp</a>
+            </div>
+            <div id="id01" class="modal">
+                {{>login}}
+            </div>
+            <div id="id02" class="modal">
+                 {{>signup}}     
+            </div>
+        </div>
+    </nav>
+    <section>
+        <div class="bg-light p-2">
+            <div class="text-center">
+                <h3>  Say Good Bye to all Myth!!!!!  </h3>
+                <h6>  Are thing skipping food, eating less food, eating only fruits <br> will help to reduce fat and become fit?</h6>
+                <h6 class="text-warning"> Here is the answer your are absolutly wrong &#x1F622</h6>  
+                <h6 class="text-info"> Its all about how many calories you are eating &#x1F60E</h6>
+            </div>
+        </div>     
+    </section>
+    <!-- BMI calc page -->
+    {{>bmicalc}}
+    <script src="/js/login.js"></script>
+    <script src="/js/BMIcalc.js"></script>              
+</div>
+</body>
+</html>                            
