@@ -102,6 +102,7 @@
     background-color: #FFC0CB;
 }
 /*BMI styles*/
+.label{border:1px solid #000}
 .label-default[href]:hover,.label-default[href]:focus{background-color:gray}
 .label-primary{background-color:#428bca}
 .label-primary[href]:hover,.label-primary[href]:focus{background-color:#3071a9}
