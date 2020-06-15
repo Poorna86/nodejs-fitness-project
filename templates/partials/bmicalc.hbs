@@ -1,23 +1,23 @@
 <bmicalc>
 <div class="container">
         <div class="row">
-        <div class="col-md-6">
-            <h3 class="jumbotron text-center">BMI Calculator</h3> 
+        <div class="col-md-8">
+            <h3 class="alt-jumbotron text-center">BMI Calculator</h3> 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <form role="form"> 
                     <div class="form-group">
                         <div class="radio">
                         <label>
                             <input type="radio" onclick="javascript:radioCheck();" name="optionsRadios" id="imperial" value="option1" checked>
-                            <span class="label label-danger">Imperial</span>
+                            <span class="bg-danger">Imperial</span>
                         </label>
                         </div> 
                         
                         <div class="radio">
                         <label>
                             <input type="radio" onclick="javascript:radioCheck();" name="optionsRadios" id="metric" value="option2">
-                            <span class="label label-success">Metric</span>
+                            <span class="bg-success">Metric</span>
                         </label>
                         </div>
                         
@@ -25,45 +25,70 @@
 
                     
                     <div id="form_Imperial" style="display:block">
-                        <div class="form-group form-inline">
-                            <label for="weight">Weight (lb): </label>
-                            <input type="number" class="w-50 borders" id="weight" placeholder="weight in lb" class="form-control">
+                        <div class="form-group row">
+                            <label for="weight" class="col-sm-4 col-form-label">Weight (lb): </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="weight" placeholder="weight in lb">
+                            </div>
                         </div>
                         
-                        <div class="form-group form-inline">
-                            <label for="weight_foot">Height (foot): </label>
-                            <input type="number" class="w-50 borders" id="weight_foot" placeholder="height in foot" class="form-control">
+                        <div class="form-group row">
+                            <label for="weight_foot" class="col-sm-4 col-form-label">Height (foot): </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="weight_foot" placeholder="height in foot">
+                            </div>
                         </div>
                         
-                        <div class="form-group form-inline">
-                            <label for="height_inch">Height (inch):</label>
-                            <input type="number" class="w-50 borders" id="height_inch" placeholder="height in inch" class="form-control">
+                        <div class="form-group row">
+                            <label for="height_inch" class="col-sm-4 col-form-label">Height (inch):</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="height_inch" placeholder="height in inch">
+                            </div>
                         </div>
                     </div>
                     
                     <div id="form_metric" style="display:none;">
-                        <div class="form-group form-inline">
-                            <label for="weight_kg">Weight (kg):  </label>
-                            <input type="number" onchange="readinput1()" id="weight_kg" placeholder="weight in kg" class="form-control">
+                        <div class="form-group row">
+                            <label for="weight_kg" class="col-sm-4 col-form-label">Weight (kg):  </label>
+                            <div class="col-sm-8">
+                                <input type="number" id="weight_kg" class="form-control" placeholder="weight in kgs">
+                            </div>
                         </div>
                         
-                        <div class="form-group form-inline">
-                            <label for="height_cm">Height (cm):  </label>
-                            <input type="number" onchange="readinput2()" id="height_cm" placeholder="height in cm" class="form-control">
+                        <div class="form-group row">
+                            <label for="height_cm" class="col-sm-4 col-form-label">Height (cm):  </label>
+                            <div class="col-sm-8">
+                                <input type="number" id="height_cm" class="form-control" placeholder="height in cm">
+                            </div>
                         </div>
                         
                     </div>
+                    <h5><input type="button" id="bt" class="bg-info rounded p-1 ml-4" value="compute BMI" onclick="showTableData()" /></h5>
                 </div>
-            </div>        
+                <div class="col-sm-6">
+                    <!-- Calculated BMI is shown here -->
+                    <div class="well text-center">
+                        <h3 class="text-muted">Calculated BMI</h3>
+                        <h4> <span class="w-25 bg-light" id="bmiOut"></span></h4>
+                        <h4> <span class="w-25 text-muted" id="title"></span></h4>
+                    </div>           
+                </div>
+            </div>       
             </form>
-            
-            <!-- Calculated BMI is shown here -->
-            <div class="well text-center">
-            <h3 class="text-muted">Calculated BMI</h3>
-             <h2>{{test1}}</h2>
-             <h4>{{test2}}</h4>
-            </div>
         </div>
+        <div class="col-sm-4">
+            <table class="cinfoT mx-auto text-center">
+                <tr><td class="cinfoHd">Category</td><td class="cinfoHdL">BMI range - kg/m<sup>2</sup></td></tr>
+                <tr><td>Severe Thinness</td><td class="cinfoBodL">&lt; 16</td></tr>
+                <tr><td>Moderate Thinness</td><td class="cinfoBodL">16 - 17</td></tr>
+                <tr><td>Mild Thinness</td><td class="cinfoBodL">17 - 18.5</td></tr>
+                <tr><td>Normal</td><td class="cinfoBodL">18.5 - 25</td></tr>
+                <tr><td>Overweight</td><td class="cinfoBodL">25 - 30</td></tr>
+                <tr><td>Obese Class I</td><td class="cinfoBodL">30 - 35</td></tr>
+                <tr><td>Obese Class II</td><td class="cinfoBodL">35 - 40</td></tr>
+                <tr><td>Obese Class III</td><td class="cinfoBodL">&gt; 40</td></tr>
+            </table>
         </div>
+    </div>
 </div>        
 </bmicalc>
