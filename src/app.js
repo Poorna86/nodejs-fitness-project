@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 const app = express()
+const loginRouter = require('../src/routers/loginorsignup')
 
 const port = process.env.PORT || 3000
 
@@ -17,6 +18,11 @@ hbs.registerPartials(templatePartials)
 
 //setup static directory to serve
 app.use(express.static(htmlLibPath))
+
+app.use(express.json()) //receives data from webserver
+app.use(loginRouter) //call user router
+
+
 
 app.get('',(req,res) => {
     res.render('index',{

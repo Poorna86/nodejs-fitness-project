@@ -1,5 +1,5 @@
 <signup>
-    <div class="card bg-light">
+    <form id="signup-form" class="card bg-light" method="POST" action="/signup">
         <article class="card-body mx-auto" style="max-width: 400px;">
             <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">×</span> 
             <h4 class="card-title mt-3 text-center">Create Account</h4>
@@ -15,13 +15,13 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="Full name" type="text">
+                    <input name="name" class="form-control" placeholder="Full name" type="text">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="Email address" type="email">
+                    <input name="email" class="form-control" placeholder="Email address" type="email">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -30,19 +30,19 @@
                     <select class="custom-select" style="max-width: 120px;">
                         <option selected="">+91</option>
                     </select>
-                    <input name="" class="form-control" placeholder="Phone number" type="text">
+                    <input name="contact" class="form-control" placeholder="Phone number" type="text">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Create password" type="password">
+                    <input name="password" class="form-control" placeholder="Create password" type="password">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Repeat password" type="password">
+                    <input name="reppassword" class="form-control" placeholder="Repeat password" type="password">
                 </div> <!-- form-group// -->                                      
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
@@ -50,5 +50,5 @@
                 <p class="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
             </form>
         </article>
-    </div>    
+    </form>    
 </signup>
