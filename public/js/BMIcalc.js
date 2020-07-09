@@ -22,54 +22,56 @@ function showTableData(){
 }
 
 function calculateBMI(weight_kg, height_cm){
-  console.log(height_cm)
-  console.log(weight_kg)
+
   var height = height_cm * height_cm
   var bmiNum = (weight_kg/height)*10000
   var bmi = bmiNum.toFixed(2)
-  console.log(bmi)
+  
+  document.getElementById("weightcat1").style.background = "none"
+  document.getElementById("weightcat2").style.background = "none"
+  document.getElementById("weightcat3").style.background = "none"
+  document.getElementById("weightcat4").style.background = "none"
+  document.getElementById("weightcat5").style.background = "none"
+  document.getElementById("weightcat6").style.background = "none"
+  document.getElementById("weightcat7").style.background = "none"
+  document.getElementById("weightcat8").style.background = "none"
+
   if (bmi){
-    if((bmi <= 24) && (bmi >= 19)) {
+    if((bmi <= 25) && (bmi >= 18.5)) {
     document.getElementById('title').style.backgroundColor = "#5cb85c"
     document.getElementById('title').innerHTML = 'normal'
-    var title = 'normal'
-  } else if((bmi < 19) && (bmi > 0)) {
-    var class_var = 'danger'
-    var title = 'Underweight'
-  } else if(bmi > 24) {
-    var class_var = 'danger'
-    var title = 'Overweight'
+    document.getElementById("weightcat4").style.background = "#5cb85c"
+  } else if((bmi < 18.5) && (bmi > 0)) {
+    document.getElementById('title').style.backgroundColor = "#DC143C"
+    document.getElementById('title').innerHTML = 'Underweight'
+      if(bmi <= 16){
+        document.getElementById("weightcat1").style.background = "#DC143C"
+      } else if (bmi > 16 && bmi < 17) {
+        document.getElementById("weightcat2").style.background = "#FF4500"
+      } else 
+        document.getElementById("weightcat3").style.background = "#FF6347"
+  } else if(bmi > 25) {
+    document.getElementById('title').style.backgroundColor = "#DC143C"
+    document.getElementById('title').innerHTML = 'Overweight'
+      if(bmi > 25 && bmi <= 30){
+        document.getElementById("weightcat5").style.background = "#FF6347"
+      } else if (bmi > 30 && bmi <= 35) {
+        document.getElementById("weightcat6").style.background = "#FF4500"
+      } else if (bmi > 35 && bmi <= 40) {
+        document.getElementById("weightcat7").style.background = "#FF0000"
+      } else
+        document.getElementById("weightcat8").style.background = "#DC143C"
   } else {
     bmi = '00.00'
-    console.log('first loop')
     document.getElementById('title').style.backgroundColor = "#864e05"
     document.getElementById('title').innerHTML = 'Unknown'
   } } else {
     bmi = '00.00'
-    console.log('first loop 1')
     document.getElementById('title').style.backgroundColor = "#864e05"
     document.getElementById('title').innerHTML = 'Unknown'
   }
 
   document.getElementById('bmiOut').innerHTML = bmi
-
-  /* BMI tag with value 
-  var bmi_spantag = document.createElement('div')
-  bmi_spantag.textContent = bmi
-  bmi_spantag.setAttribute('class', 'w-50 text-center label-' +class_var)
-  var test1 = document.body.appendChild(bmi_spantag)
-  
-  /* title tag with title      var title_spantag = document.createElement('div')
-  title_spantag.textContent = title
-  title_spantag.setAttribute('class', 'w-50 text-center text-muted')
-  var test2 = document.body.appendChild(title_spantag)
-
-  console.log(test1)
-  console.log(test2)
-  document.getElementById("id01-1").innerHTML = test1 
-
-  console.log(test2)
-  document.getElementById("id02-2").innerHTML = test2 */
 }
 
 function SetDefaultValue(){

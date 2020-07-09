@@ -1,10 +1,10 @@
 <bmicalc>
 <div class="container">
         <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <h3 class="alt-jumbotron text-center">BMI Calculator</h3> 
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <form role="form"> 
                     <div class="form-group">
                         <div class="radio">
@@ -65,29 +65,29 @@
                     </div>
                     <h5><input type="button" id="bt" class="bg-info rounded p-1 ml-4" value="compute BMI" onclick="showTableData()" /></h5>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <!-- Calculated BMI is shown here -->
                     <div class="well text-center">
-                        <h3 class="text-muted">Calculated BMI</h3>
+                        <h3>Calculated BMI</h3>
                         <h4> <span class="w-25 bg-light" id="bmiOut"></span></h4>
-                        <h4> <span class="w-25 text-muted" id="title"></span></h4>
+                        <h4> <span class="w-25" id="title"></span></h4>
                     </div>           
+                </div>
+                <div class="col-sm-4">
+                    <table class="cinfoT mx-auto text-center">
+                        <tr><td class="cinfoHd">Category</td><td class="cinfoHdL">BMI range - kg/m<sup>2</sup></td></tr>
+                        <tr id="weightcat1"><td>Severe Thinness</td><td class="cinfoBodL">&lt; 16</td></tr>
+                        <tr id="weightcat2"><td>Moderate Thinness</td><td class="cinfoBodL">16 - 17</td></tr>
+                        <tr id="weightcat3"><td>Mild Thinness</td><td class="cinfoBodL">17 - 18.5</td></tr>
+                        <tr id="weightcat4"><td>Normal</td><td class="cinfoBodL">18.5 - 25</td></tr>
+                        <tr id="weightcat5"><td>Overweight</td><td class="cinfoBodL">25 - 30</td></tr>
+                        <tr id="weightcat6"><td>Obese Class I</td><td class="cinfoBodL">30 - 35</td></tr>
+                        <tr id="weightcat7"><td>Obese Class II</td><td class="cinfoBodL">35 - 40</td></tr>
+                        <tr id="weightcat8"><td>Obese Class III</td><td class="cinfoBodL">&gt; 40</td></tr>
+                    </table>
                 </div>
             </div>       
             </form>
-        </div>
-        <div class="col-sm-4">
-            <table class="cinfoT mx-auto text-center">
-                <tr><td class="cinfoHd">Category</td><td class="cinfoHdL">BMI range - kg/m<sup>2</sup></td></tr>
-                <tr><td>Severe Thinness</td><td class="cinfoBodL">&lt; 16</td></tr>
-                <tr><td>Moderate Thinness</td><td class="cinfoBodL">16 - 17</td></tr>
-                <tr><td>Mild Thinness</td><td class="cinfoBodL">17 - 18.5</td></tr>
-                <tr><td>Normal</td><td class="cinfoBodL">18.5 - 25</td></tr>
-                <tr><td>Overweight</td><td class="cinfoBodL">25 - 30</td></tr>
-                <tr><td>Obese Class I</td><td class="cinfoBodL">30 - 35</td></tr>
-                <tr><td>Obese Class II</td><td class="cinfoBodL">35 - 40</td></tr>
-                <tr><td>Obese Class III</td><td class="cinfoBodL">&gt; 40</td></tr>
-            </table>
         </div>
     </div>
 </div>        
