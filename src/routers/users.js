@@ -1,24 +1,27 @@
+const path = require('path')
 const express = require('express')
 const User = require('../models/user')
 const router = new express.Router
-const bodyParser = require('body-parser')
+const auth = require('../middleware/auth')
 
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
 //inserting input to the database
-router.post('/signup', urlencodedParser, async (req,res) => {  
+router.post('/signup', async (req,res) => {  
+    
     const user = new User(req.body)  
-     
+    console.log('users: ', user)
     try{
-       await user.save() //mongoose middleware functionality 
-       res.status(200).send()
+        await user.save() //mongoose middleware functionality 
+        const token = await user.generateAuthToken()
+        res.status(201).send({user, token})
     } catch(e) {
         res.status(400).send(e)  //send invalid status code
     }
 })
 
-router.post('/signin', urlencodedParser, async (req,res) => {  
+router.post('/signin',auth, async (req,res) => {  
         try{
             const user = await User.findByCredentials(req.body.email, req.body.password) 
+            const token = await user.generateAuthToken()
             res.status(200).send(user)
         } catch(e) {
             res.status(400).send()  //send invalid status code

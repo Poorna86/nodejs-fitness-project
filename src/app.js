@@ -7,6 +7,8 @@ const userRouter = require('./routers/users')
 
 const port = process.env.PORT || 3000
 
+
+
 // const loggerMiddleware = (req, res, next) => {
 //     console.log('New request to: ' + req.method + ' ' + req.path)
 //     next()
@@ -28,6 +30,7 @@ hbs.registerPartials(templatePartials)
 app.use(express.static(htmlLibPath))
 
 app.use(express.json()) //receives data from webserver
+app.use(express.urlencoded({ extended: false }))
 app.use(userRouter) //call user router
 
 

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const userSchema = new mongoose.Schema({
     name:{
@@ -48,7 +49,13 @@ const userSchema = new mongoose.Schema({
                 throw new Error('password should not contain key word "password"')
             }
         }
-    }
+    },
+    tokens:[{
+        token: {
+            type: String,
+            required: true
+        }
+    }]
 })
 
 //hash the plain text password before saving the password
@@ -58,7 +65,6 @@ userSchema.pre('save', async function (next) {
     if(signup.password !== signup.reppassword) {
         throw new Error('password and reentered password are not same')     
     } else {
-        console.log('pswd check: ', signup.password + ' ' + ' ', signup.reppassword)
         signup.password = await bcrypt.hash(signup.password, 8)         
         signup.reppassword = await bcrypt.hash(signup.reppassword, 8)         
     }     
@@ -77,6 +83,29 @@ userSchema.statics.findByCredentials = async (email, password) => {
     }
     return user
 }
+
+//token generation to the indivisual user
+userSchema.methods.generateAuthToken = async function() {
+    
+    const user = this
+    
+    console.log('user: ', user)
+    console.log('user._id: ', user._id)
+    
+    const token = jwt.sign({ _id: user._id.toString() }, 'thisismynewcourse')
+    console.log('token: ', token)
+    
+    user.tokens = user.tokens.concat({token})
+
+    
+    console.log('tokens: ', user.tokens)
+    consol.log('user 1: ', user)
+    
+    await user.save()
+    
+    return token
+}
+
 
 const User = mongoose.model('Users', userSchema) //'User' is an mongodb collection name(table name)
 
