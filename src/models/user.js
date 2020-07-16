@@ -98,8 +98,8 @@ userSchema.methods.generateAuthToken = async function() {
     user.tokens = user.tokens.concat({token})
 
     
-    console.log('tokens: ', user.tokens)
-    consol.log('user 1: ', user)
+    //console.log('tokens: ', user.tokens)
+    //consol.log('user 1: ', user)
     
     await user.save()
     
