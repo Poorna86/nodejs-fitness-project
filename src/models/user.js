@@ -61,12 +61,16 @@ const userSchema = new mongoose.Schema({
 //hash the plain text password before saving the password
 userSchema.pre('save', async function (next) {     
 
-    const signup = this            
+    const signup = this
+    console.log('signup')            
     if(signup.password !== signup.reppassword) {
         throw new Error('password and reentered password are not same')     
     } else {
-        signup.password = await bcrypt.hash(signup.password, 8)         
-        signup.reppassword = await bcrypt.hash(signup.reppassword, 8)         
+        console.log('pswd1')
+        signup.password = await bcrypt.hash(signup.password, 8)
+        console.log('pswd2')         
+        signup.reppassword = await bcrypt.hash(signup.reppassword, 8)
+        console.log('after pswds')         
     }     
     next()
 })
