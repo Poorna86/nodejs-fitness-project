@@ -8,10 +8,11 @@ const auth = require('../middleware/auth')
 router.post('/signup', async (req,res) => {  
     
     const user = new User(req.body)  
-    console.log('users: ', user)
+    
     try{
         await user.save() //mongoose middleware functionality 
         const token = await user.generateAuthToken()
+        console.log('users token: ', token)
         res.status(201).send({user, token})
     } catch(e) {
         res.status(400).send(e)  //send invalid status code

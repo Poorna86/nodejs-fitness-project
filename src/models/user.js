@@ -60,18 +60,17 @@ const userSchema = new mongoose.Schema({
 
 //hash the plain text password before saving the password
 userSchema.pre('save', async function (next) {     
-
     const signup = this
-    console.log('signup')            
-    if(signup.password !== signup.reppassword) {
-        throw new Error('password and reentered password are not same')     
-    } else {
-        console.log('pswd1')
-        signup.password = await bcrypt.hash(signup.password, 8)
-        console.log('pswd2')         
-        signup.reppassword = await bcrypt.hash(signup.reppassword, 8)
-        console.log('after pswds')         
-    }     
+
+    if(signup.isModified('password')) {
+                
+        if(signup.password !== signup.reppassword) {
+            throw new Error('password and reentered password are not same')     
+        } else {
+            signup.password = await bcrypt.hash(signup.password, 8)
+            signup.reppassword = await bcrypt.hash(signup.reppassword, 8)
+        }
+    }         
     next()
 })
 
@@ -90,24 +89,21 @@ userSchema.statics.findByCredentials = async (email, password) => {
 
 //token generation to the indivisual user
 userSchema.methods.generateAuthToken = async function() {
-    console.log('user: ')
+    
     const user = this
     
-    console.log('user: ')
-    console.log('user._id: ')
+    try{
+        console.log('user id: ', user._id)
+        const token = jwt.sign({ _id: user._id.toString() }, 'thisismynewcourse')
+        user.tokens = user.tokens.concat({token})
+        //console.log('check error')
+        await user.save()
+        return token
+    } catch(e) {
+        throw new Error(e)
+    } 
     
-    const token = jwt.sign({ _id: user._id.toString() }, 'thisismynewcourse')
-    console.log('token: ', token)
-    
-    user.tokens = user.tokens.concat({token})
-
-    
-    //console.log('tokens: ', user.tokens)
-    //consol.log('user 1: ', user)
-    
-    await user.save()
-    
-    return token
+    //return token
 }
 
 
