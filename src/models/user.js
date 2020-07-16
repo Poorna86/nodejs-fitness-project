@@ -90,11 +90,11 @@ userSchema.statics.findByCredentials = async (email, password) => {
 
 //token generation to the indivisual user
 userSchema.methods.generateAuthToken = async function() {
-    
+    console.log('user: ')
     const user = this
     
-    console.log('user: ', user)
-    console.log('user._id: ', user._id)
+    console.log('user: ')
+    console.log('user._id: ')
     
     const token = jwt.sign({ _id: user._id.toString() }, 'thisismynewcourse')
     console.log('token: ', token)
