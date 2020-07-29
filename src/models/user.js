@@ -56,6 +56,8 @@ const userSchema = new mongoose.Schema({
             required: true
         }
     }]
+}, {
+    timestamps: true    
 })
 
 //hash the plain text password before saving the password
@@ -87,25 +89,31 @@ userSchema.statics.findByCredentials = async (email, password) => {
     return user
 }
 
-//token generation to the indivisual user
-userSchema.methods.generateAuthToken = async function() {
-    
+userSchema.methods.toJSON = function() {
     const user = this
-    
     try{
-        console.log('user id: ', user._id)
-        const token = jwt.sign({ _id: user._id.toString() }, 'thisismynewcourse')
-        user.tokens = user.tokens.concat({token})
-        //console.log('check error')
-        await user.save()
-        return token
+        const userObject = user.toObject() //JSON.stringfy metoh called internally
+        delete userObject.password
+        delete userObject.tokens
+        delete userObject.reppassword
+        return userObject
     } catch(e) {
-        throw new Error(e)
-    } 
+        console.log(e)
+    }
     
-    //return token
 }
 
+userSchema.methods.generateAuthToken = async function() { // no arrow function because of use of 'this'
+    try {
+        const user = this
+        const token = jwt.sign({ _id: user._id.toString() }, 'tokenvalue')
+        user.tokens = user.tokens.concat({token})
+        await user.save()
+        return token
+    }   catch(e) {
+        console.log(e)
+    } 
+}
 
 const User = mongoose.model('Users', userSchema) //'User' is an mongodb collection name(table name)
 

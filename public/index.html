@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Fitness</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Montserrat:400,700|Raleway" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
+	<link rel="shortcut icon" href="images/fitnessicon.png" />
+</head>
+
+<body>
+
+  <div class="loader">
+    <div class="outer"></div>
+    <div class="middle"></div>
+    <div class="inner"></div>
+  </div>  
+  
+  <div id='fully-loaded' class='hide'> <!--hide class will hide entire body content-->
+    <div class="bg-opacity">
+      <nav class="navbar navbar-expand-xl navbar-light fixed-top">
+        <div class="container">
+          <a href="/" class="navbar-brand"><span style="font-family: overwatch; font-style: normal"><img src="images/fitnesslogo.png" height=28 alt="fitness logo"></span>Fitness</a>
+          <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#overwatch-nav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon custom-toggler"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="overwatch-nav">
+            <ul class="nav navbar-nav text-uppercase ml-auto">
+              <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="/services">Check Body <i class="fas fa-angle-down"></i></a></li>
+              <li class="nav-item"><a class="nav-link" href="/reviews">Diet Chart</a></li>
+              <li class="nav-item"><a class="nav-link" href="/reviews">Workout plan</a></li>
+              <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+            </ul>
+            <ul class="nav navbar-nav justify-content-center d-flex ml-auto text-uppercase">
+              <li class="nav-item"><a class="nav-link" id="navbarLogin" href="#">Log in</a></li>
+              <span class="d-flex"> <!-- stops button below from filling container width -->
+                <button id="navbarRegister" type="button" class="btn btn-success">SIGN UP</button>
+              </span>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  
+  <!-- =============== REGISTER MODAL =============== -->
+
+  <div id='register-modal' class='modal fadeOut'>
+    <div id='register-content' class='modal-content animated'>
+      <span id='register-close' class='close'></span>
+      <span class='register-header'>Register With Us</span>
+
+      <form method='POST' action='/signup' spellcheck='false' autocomplete="off">
+        <input type="text" id='reg-name' name='name' placeholder='Name' required>
+        <input type='email' id='reg-email' name='email' placeholder='Email' required>
+        <div class="form-group input-group">
+          <select id="reg-con" class="custom-select ml-3 mr-2" style="max-width: 50px;">
+              <option id="reg-contry" selected="">+91</option>
+          </select>
+          <input type="number" id="reg-phone" name="contact" class="phone-num form-control mr-3" placeholder="Phone number" maxlength="10" required>
+        </div> <!-- form-group// -->
+        <input type='password' id='reg-password' name='password' placeholder='Password' maxlength='18' required>
+        <input type='password' id='confirm' name='reppassword' placeholder='Repeat Password' required>
+        <button type='submit' id='register-btn'>Create Your Account</button>
+      </form>
+      <span id='reg-message'></span>
+    </div>
+  </div>
+
+  <!-- =============== LOGIN MODAL =============== -->
+
+  <div id='login-modal' class='modal fadeOut'>
+    <div id='login-content' class='modal-content animated'>
+      <span id='login-close' class='close'></span>
+      <span class='register-header'>Login</span>
+      
+      <form method='POST' action='/signin' spellcheck="false">
+        <input type='email' id='log-email' name='email' placeholder='Email' required>
+        <input type='password' id='log-password' name='password' placeholder='Password' required>
+        <button type='submit' id='login-btn'>Submit</button>
+        <span id='log-message'></span>
+        <a href='#' class='login-link'>Forgot My Password</a>
+      </form>
+      
+    </div>
+  </div>
+  <!-- =============== SCRIPTS =============== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="app.js"></script>
+</body>
+</html>

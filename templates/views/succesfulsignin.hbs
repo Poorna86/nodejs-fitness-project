@@ -36,18 +36,12 @@
                 </div>    
                 <a href="#" class="nav-item nav-link">Diet Chart</a>
                 <a href="#" class="nav-item nav-link">Workout plan</a>
-                <a href="/contactus" class="nav-item nav-link">Contact Us</a>
             </div>
             <div class="navbar-nav ml-auto">
-               <!-- <a href="login.html" class="nav-item nav-link">Login</a> -->
-                <a href="#" onclick="document.getElementById('id01').style.display='block'" class="nav-item nav-link">Login</a>
-                <a href="#" onclick="document.getElementById('id02').style.display='block'" class="nav-item nav-link">SignUp</a>
-            </div>
-            <div id="id01" class="modal">
-                {{>login}}
-            </div>    
-            <div id="id02" class="modal">
-                {{>signup}}     
+                <img src="/images/user.png" height=28 alt="User">
+                <form method='POST' action='/logout'>
+                    <button type="submit" class="nav-item nav-link disable_button" href="#">Log Out</button>
+                </form>
             </div>
         </div>
     </nav>
@@ -59,21 +53,9 @@
             </div>
         </div>
     </section>
-    <footer id="footer" class="page-footer unique-color-dark mt-4">
-        <div class="info-color-dark text-center py-4">
-            <a href="#" class="p-2 px-3 mr-4 d-none d-md-inline-block">Join our newsletter      <i class="fa fa-envelope white-text ml-2"> </i>
-            <a href="#" class="p-2 px-3 mr-4 d-none d-md-inline-block">Become an Affiliate      <i class="fa fa-money-bill-alt white-text ml-2"> </i>
-            <a href="/contactus" class="p-2 px-3 mr-4 d-none d-md-inline-block">Contact us      <i class="fa fa-envelope white-text ml-2"> </i>
-            <a href="#"><i class="fa fa-youtube white-text mr-4"> </i></a>
-            <a href="#"><i class="fa fa-facebook-f white-text mr-4"> </i></a>
-            <a  href="#"><i class="fa fa-twitter white-text"> </i></a>
-        </div>
-        <div class="footer-copyright py-3 text-center">&copy; 2020 Copyright:
-            <a href="https://mdbootstrap.com">
-                <strong> MDBootstrap.com</strong>
-            </a>
-        </div>        
-    </footer>
+    <div id="footer" class="page-footer unique-color-dark mt-4">
+        {{>footer}}                
+    </div>
     <script src="/js/login.js"></script>
 </div>
 </body>

@@ -1,0 +1,385 @@
+
+html {
+	overflow-y: scroll; /* necessary to prevent modal moving background to the right */
+}
+
+body {
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	height: auto;
+	width: 100%;
+}
+
+/* =============== LOADER =============== */
+
+.loader {
+	background-color: #0f0f0f;
+	height: 100vh;
+	position: relative;
+}
+
+.outer,
+.middle,
+.inner {
+	border: 3px solid transparent;
+	border-top-color: #f99e1a;
+	border-right-color: #f99e1a;
+	border-radius: 50%;
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
+}
+
+.outer {
+	width: 3.5em;
+	height: 3.5em;
+	margin-left: -1.75em;
+	margin-top: -1.75em;
+	animation: spin 2s linear infinite;
+}
+
+.middle {
+	width: 2.1em;
+	height: 2.1em;
+	margin-left: -1.05em;
+	margin-top: -1.05em;
+	animation: spin 1.75s linear reverse infinite;
+}
+
+.inner {
+	width: 0.8em;
+	height: 0.8em;
+	margin-left: -0.4em;
+	margin-top: -0.4em;
+	animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* hide class hides entire body content */
+ .hide {
+	height: 0;
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: visibility 0s 0.7s, opacity 0.7s ease-out;
+	-moz-transition: visibility 0s 0.7s, opacity 0.7s ease-out;
+	-o-transition: visibility 0s 0.7s, opacity 0.7s ease-out;
+	transition: visibility 0s 0.7s, opacity 0.7s ease-out;
+}
+
+/* =============== ABOVE THE SCROLL =============== */
+
+/*the bg-opacity property adds black opacity to background image*/
+.bg-opacity {
+	height: 100vh; /* height: 100vh stretches div to bottom */
+    overflow-y: hidden; /*necessary to prevent second scrollbar on some screens */
+    position: relative;
+    background-color: #000;
+}
+
+.bg-opacity::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.95;
+    background: linear-gradient(to top, rgba(255,255,255,0.1) 50%,
+        rgba(0,0,0,1)), url("images/main.png")	50% 50% no-repeat; 
+	background-size: cover;
+    background-attachment:fixed;
+}
+
+a:hover {
+	color: #444;
+	text-decoration: none;
+}
+
+/* =============== NAVBAR =============== */
+
+/* Navbar brand and navbar link font color */
+.navbar-light .navbar-brand, .navbar-light .navbar-nav .nav-link {
+	color: #ede8e3; 
+	margin-right: 20px;
+	font-size: 17px;
+}
+
+.navbar-light .navbar-brand {
+	font-family: 'koverwatch', sans-serif;
+	font-weight: 900;
+	font-size: 32px;
+	font-style: italic;
+}
+
+/* Navbar link hover/active font color */
+
+/*Changes color of navbar-brand*/
+.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus,  
+
+/*Changes color of all the navbar links*/
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+    text-decoration: none;
+    color: #f99e1a;
+}
+
+/* when hover this will show nav bar items with background line */
+.nav-link {
+	display: inline-block;
+	position: relative;
+}
+
+/* when hover this will show entire nav bar items with background line */
+.nav-link::before {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #f99e1a;
+	transform-origin: center;
+	transform: translate(-50%, 0) scaleX(0);
+	transition: transform 0.3s ease-in-out;
+  }
+
+  .nav-link:hover::before {
+	transform: translate(-50%, 0) scaleX(1);
+  }
+
+/* signup button background setting */
+  .btn-success {
+	font-family: 'Lato', sans-serif;
+	font-size: 17px;
+	font-weight: 600;  
+	color: #ede8e3;
+	letter-spacing: 1px;
+	line-height: 15px;
+	border: 1.5px solid #ede8e3;
+	border-radius: 40px;
+	background: transparent;
+	padding-right: 1em;
+	padding-left: 1em;
+	transition: background 0.3s ease 0s;
+}
+
+.btn-success:hover, .btn.btn-success:focus {
+	color: #FFF;
+	background: #f99e1a !important;
+	border: 1.5px solid #f99e1a !important;
+}
+
+/* delete this once project is done */
+.btn.btn-success:focus {
+	box-shadow: 0 0 0 0.2rem rgba(249, 158, 26, 0.25) !important;
+} 
+
+
+/* Toggler button border color when active */
+.custom-toggler:focus, .custom-toggler .navbar-toggler:focus {
+	outline: none;
+}
+
+/* Toggler icon bar color, opacity 1.0 with 0.0 being completely transparent, 0.5 being half transparent */
+.custom-toggler .navbar-toggler-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(237,232,227, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* This changes the three bars inside the toggler icon to orange when hovered over*/
+.custom-toggler .navbar-toggler-icon:hover, .custom-toggler .navbar-toggler-icon:focus {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(249,158,26, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* This changes the border of the toggler icon to light grey */
+.custom-toggler.navbar-toggler {
+	border-color: rgb(215, 205, 193);
+	border-width: 1.5px;
+}
+
+/* =============== REGISTER/LOGIN MODALS =============== */
+
+.modal {
+	background: rgba(0,0,0,0.6);
+	margin: auto;
+	z-index: 1030;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	margin: 0;
+}
+
+.modal-content {
+	text-align: center;
+	background: #f99e1a;
+	margin: auto;
+	padding: 2em;
+	width: 30vw;
+	border-radius: 10px;
+	border: 1px outset #fcbe65;
+	-webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding-box;
+	background-clip: padding-box;
+}
+
+.wrapper {
+	position: relative;
+	display: inline-block;
+}
+.close:before {
+	content: '✕';
+}
+.close {
+	position: absolute;
+	top: 2%;
+	right: 2%;
+	cursor: pointer;
+	overflow-y: hidden;
+}
+
+.close:hover,
+.close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.fadeOut {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.fadeIn {
+	visibility: visible;
+	opacity: 1;
+	transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+.register-header {
+	font-weight: 700;
+	font-size: 2em;
+	color: #ede8e3;
+	font-style: italic;
+	font-family: 'koverwatch', serif;
+	padding-right: 5px;
+}
+
+.custom-select {
+	font-size: 0.75em;
+	display: block;
+	margin: 0.5em auto;
+}
+
+.custom-select {
+	background: #ede8e34d;
+	padding: 0.5em 0.5em 0.5em 0.75em;
+	border: none;
+	border-radius: 15px;
+}
+
+.phone-num,input, #register-btn, #login-btn {
+	font-size: 0.75em;
+	display: block;
+	margin: 0.5em auto;
+	width: 90%;
+}
+
+.phone-num,input {
+	background: rgba(237,232,227,0.3);
+	padding: 0.5em 0.5em 0.5em 0.75em;
+	border: none;
+	color: #222;
+	border-radius: 15px;
+}
+
+	input:focus {
+		background: rgba(237,232,227,0.45);
+	}
+
+	.phone-num:focus {
+		background: rgba(237,232,227,0.45);
+	}
+
+	input:focus::-webkit-input-placeholder {
+	    color: transparent;
+	}
+
+	input:focus:-moz-placeholder {
+	    color: transparent;
+	}
+
+	input:focus::-moz-placeholder {
+	    color: transparent;
+	}
+
+input::-webkit-input-placeholder {
+    color: #555;
+}
+
+input:-moz-placeholder {
+    color: #555;
+}
+
+input::-moz-placeholder {
+    color: #555;
+}
+
+#register-btn, #login-btn {
+	background: rgb(237,232,227);
+	color: #222;
+	font-size: 1.5em;
+	font-weight: 500;
+	font-style: italic;
+	font-family: 'koverwatch', serif;
+	padding-right: 10px;
+	border-radius: 25px;
+}
+
+input:focus, #register-btn:focus, #login-btn:focus {
+	outline: none;
+}
+
+.login-link {
+	font-size: 13px;
+}
+
+#reg-message, #log-message, #contact-message {
+	font-family: 'Lato', sans-serif;
+	font-size: 0.9em;
+/*	font-weight: 700;*/
+	color: #ede8e3;
+}
+
+::selection {
+	background: #f99e1a;
+	color: #ede8e3;
+}
+
+::-moz-selection {
+	background: #f99e1a;
+	color: #ede8e3;
+}
+
+@media (min-width: 576px) {
+	.bottom-nav-item{
+		-ms-flex: 0 0 25%;
+    	flex: 0 0 25%;
+    	max-width: 25%;
+	}
+}
