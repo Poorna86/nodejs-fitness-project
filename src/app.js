@@ -11,7 +11,7 @@ const userRouter = require('./routers/users') //Load user router module into the
 const jwt = require('jsonwebtoken')
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT
 
 // ======== Middleware ========
 app.use(express.json()) //receives data from webserver
